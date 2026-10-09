@@ -19,7 +19,7 @@ namespace NuGet.Common
 
         public static string? GetRoot()
         {
-            var root = Environment.GetEnvironmentVariable(EnvironmentKey);
+            var root = EnvironmentVariableWrapper.Instance.GetEnvironmentVariable(EnvironmentKey);
             if (string.IsNullOrEmpty(root) || root == "0" || string.Equals(root, "off", StringComparison.OrdinalIgnoreCase))
             {
                 return null;
