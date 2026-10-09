@@ -19,7 +19,7 @@ namespace NuGet.Commands
 {
     public class RestoreRequest
     {
-        public static readonly int DefaultDegreeOfConcurrency = 16;
+        public static readonly int DefaultDegreeOfConcurrency = Math.Max(16, Environment.ProcessorCount * 2);
 
         private string _lockFilePath;
 

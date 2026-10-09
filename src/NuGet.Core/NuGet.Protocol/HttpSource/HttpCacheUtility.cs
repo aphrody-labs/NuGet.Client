@@ -6,6 +6,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using NuGet.Common;
 using NuGet.Protocol.Core.Types;
 
 namespace NuGet.Protocol
@@ -113,6 +114,11 @@ namespace NuGet.Protocol
                 File.Move(
                     result.NewFile,
                     result.CacheFile);
+
+                if (result.CacheFile.EndsWith(".nupkg", StringComparison.OrdinalIgnoreCase))
+                {
+                    AphrodyStore.TryIngest(result.CacheFile, sha512Base64: null);
+                }
             }
 
             // Even the file deletion operation above succeeds but the file is not actually deleted,

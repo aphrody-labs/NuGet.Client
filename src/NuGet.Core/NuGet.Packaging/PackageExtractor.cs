@@ -851,6 +851,7 @@ namespace NuGet.Packaging
                                     packageDownloader.Dispose();
 
                                     File.Move(targetTempNupkg, targetNupkg);
+                                    AphrodyStore.TryIngest(targetNupkg, packageHash);
                                 }
                             }
                             else

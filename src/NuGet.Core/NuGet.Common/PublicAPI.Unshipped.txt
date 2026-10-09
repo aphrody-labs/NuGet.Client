@@ -1,4 +1,10 @@
 #nullable enable
+NuGet.Common.AphrodyStore
+const NuGet.Common.AphrodyStore.EnvironmentKey = "APHRODY_STORE" -> string!
+static NuGet.Common.AphrodyStore.BlobPath(string! root, string! algorithm, string! hexDigest) -> string!
+static NuGet.Common.AphrodyStore.GetRoot() -> string?
+static NuGet.Common.AphrodyStore.Materialize(string! source, string! destination) -> bool
+static NuGet.Common.AphrodyStore.TryIngest(string! file, string? sha512Base64) -> bool
 NuGet.Common.StaticState
 static NuGet.Common.StaticState.BuildEnded -> System.Action?
 static NuGet.Common.StaticState.RaiseBuildEnded() -> void

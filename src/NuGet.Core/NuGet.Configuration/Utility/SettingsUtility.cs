@@ -300,6 +300,12 @@ namespace NuGet.Configuration
                 return path;
             }
 
+            var store = AphrodyStore.GetRoot();
+            if (store != null)
+            {
+                return Path.Combine(store, "nuget", DefaultGlobalPackagesFolderPath);
+            }
+
             path = Path.Combine(NuGetEnvironment.GetFolderPath(NuGetFolderPath.NuGetHome), DefaultGlobalPackagesFolderPath);
 
             return path;
@@ -388,6 +394,12 @@ namespace NuGet.Configuration
                 path = path!.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
                 path = Path.GetFullPath(path);
                 return path;
+            }
+
+            var store = AphrodyStore.GetRoot();
+            if (store != null)
+            {
+                return Path.Combine(store, "nuget", "http-cache");
             }
 
             return NuGetEnvironment.GetFolderPath(NuGetFolderPath.HttpCacheDirectory);
